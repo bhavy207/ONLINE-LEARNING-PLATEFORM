@@ -1,35 +1,14 @@
 import React from 'react';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Avatar,
-} from '@mui/material';
-import { useAuth } from '../context/AuthContext';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleLogout = () => {
     logout();
-    handleClose();
     navigate('/login');
   };
 
@@ -43,72 +22,41 @@ const Navbar = () => {
           sx={{
             flexGrow: 1,
             textDecoration: 'none',
-            color: 'inherit',
+            color: 'inherit'
           }}
         >
           Online Learning Platform
         </Typography>
-
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Button
-            color="inherit"
-            component={RouterLink}
-            to="/courses"
-          >
-            Courses
-          </Button>
-
+        <Box>
           {user ? (
             <>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
+              <Button
                 color="inherit"
+                component={RouterLink}
+                to="/courses"
               >
-                {user.avatar ? (
-                  <Avatar
-                    src={user.avatar}
-                    alt={user.name}
-                    sx={{ width: 32, height: 32 }}
-                  />
-                ) : (
-                  <AccountCircle />
-                )}
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
+                Courses
+              </Button>
+              <Button
+                color="inherit"
+                component={RouterLink}
+                to="/dashboard"
               >
-                <MenuItem
-                  component={RouterLink}
-                  to="/profile"
-                  onClick={handleClose}
-                >
-                  Profile
-                </MenuItem>
-                <MenuItem
-                  component={RouterLink}
-                  to="/dashboard"
-                  onClick={handleClose}
-                >
-                  Dashboard
-                </MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
+                Dashboard
+              </Button>
+              <Button
+                color="inherit"
+                component={RouterLink}
+                to="/profile"
+              >
+                Profile
+              </Button>
+              <Button
+                color="inherit"
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
             </>
           ) : (
             <>

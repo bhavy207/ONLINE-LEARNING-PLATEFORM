@@ -1,25 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { AuthProvider } from './context/AuthContext';
-
-// Pages
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import CourseList from './pages/CourseList';
-import CourseDetail from './pages/CourseDetail';
-import LessonView from './pages/LessonView';
-import QuizView from './pages/QuizView';
-import Profile from './pages/Profile';
-import Dashboard from './pages/Dashboard';
-
-// Components
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
-import PrivateRoute from './components/PrivateRoute';
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
+import CourseList from './components/CourseList';
+import CourseDetail from './components/CourseDetail';
+import LessonView from './components/LessonView';
+import QuizView from './components/QuizView';
 
-// Create theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -34,25 +27,26 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontSize: '2.5rem',
-      fontWeight: 500,
-    },
-    h2: {
-      fontSize: '2rem',
-      fontWeight: 500,
-    },
-    h3: {
-      fontSize: '1.75rem',
-      fontWeight: 500,
-    },
   },
 });
+
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+  
+  return children;
+};
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <AuthProvider>
         <Router>
           <Navbar />
@@ -60,38 +54,52 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/courses" element={<CourseList />} />
-            <Route path="/courses/:id" element={<CourseDetail />} />
             <Route
-              path="/courses/:courseId/lessons/:lessonId"
+              path="/dashboard"
               element={
-                <PrivateRoute>
-                  <LessonView />
-                </PrivateRoute>
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
               }
             />
             <Route
-              path="/courses/:courseId/lessons/:lessonId/quiz"
+              path="/courses"
               element={
-                <PrivateRoute>
+                <ProtectedRoute>
+                  <CourseList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/courses/:id"
+              element={
+                <ProtectedRoute>
+                  <CourseDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/courses/:courseId/lessons/:lessonId"
+              element={
+                <ProtectedRoute>
+                  <LessonView />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/courses/:courseId/quizzes/:quizId"
+              element={
+                <ProtectedRoute>
                   <QuizView />
-                </PrivateRoute>
+                </ProtectedRoute>
               }
             />
             <Route
               path="/profile"
               element={
-                <PrivateRoute>
+                <ProtectedRoute>
                   <Profile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -101,4 +109,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

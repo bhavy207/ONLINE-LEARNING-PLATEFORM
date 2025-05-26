@@ -1,9 +1,15 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext(null);
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -13,18 +19,18 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      fetchUserProfile();
+      fetchUser();
     } else {
       setLoading(false);
     }
   }, []);
 
-  const fetchUserProfile = async () => {
+  const fetchUser = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/auth/profile');
+      const response = await axios.get('http://localhost:5000/api/auth/me');
       setUser(response.data);
     } catch (error) {
-      console.error('Error fetching user profile:', error);
+      console.error('Error fetching user:', error);
       localStorage.removeItem('token');
       delete axios.defaults.headers.common['Authorization'];
     } finally {
@@ -36,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/login', {
         email,
-        password,
+        password
       });
       const { token, user } = response.data;
       localStorage.setItem('token', token);
@@ -46,14 +52,19 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        error: error.response?.data?.message || 'An error occurred during login',
+        error: error.response?.data?.message || 'An error occurred during login'
       };
     }
   };
 
-  const register = async (userData) => {
+  const register = async (name, email, password, role) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', userData);
+      const response = await axios.post('http://localhost:5000/api/auth/register', {
+        name,
+        email,
+        password,
+        role
+      });
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -62,7 +73,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        error: error.response?.data?.message || 'An error occurred during registration',
+        error: error.response?.data?.message || 'An error occurred during registration'
       };
     }
   };
@@ -78,8 +89,12 @@ export const AuthProvider = ({ children }) => {
     loading,
     login,
     register,
-    logout,
+    logout
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }; 
