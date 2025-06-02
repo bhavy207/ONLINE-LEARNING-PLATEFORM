@@ -95,4 +95,15 @@ Create a `.env` file in the server directory with the following variables:
 2. Create your feature branch
 3. Commit your changes
 4. Push to the branch
-5. Create a new Pull Request 
+5. Create a new Pull Request
+
+
+## OUTPUT
+![Image](https://github.com/user-attachments/assets/555c9c24-46c0-4249-b6ae-f3120d8611fd)
+![Image](https://github.com/user-attachments/assets/a4ddab2c-1644-4099-ba10-5f1f8aab5c66)
+![Image](https://github.com/user-attachments/assets/cc7847b9-ffe2-4a9b-bd4d-957108173a83)
+![Image](https://github.com/user-attachments/assets/33f41cff-60e6-4e29-ad82-91b6038e925d)
+![Image](https://github.com/user-attachments/assets/fe4045b4-8c10-4402-b105-42d893b6d484)
+![Image](https://github.com/user-attachments/assets/a845ba29-0032-4dee-ad86-d9ce63eac1a7)
+![Image](https://github.com/user-attachments/assets/30b08b62-d399-469e-b6b2-782261f14c18)
+![Image](https://github.com/user-attachments/assets/580bb4fe-0deb-4f87-a0cf-f0cc9d95bd0b)
