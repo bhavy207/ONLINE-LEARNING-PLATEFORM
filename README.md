@@ -1,4 +1,16 @@
-# Online Learning Platform
+# PORTFOLIO WEBSITE WITH ADVANCED ANIMATIONS
+
+*COMPANY*: CODTECH IT SOLUTIONS
+
+*NAME*: BHAVY MANGUKIYA
+
+*INTERN ID*: CT04DM87
+
+*DOMAIN* : WEB DEVELOPER
+
+*DURATION*: 4 WEEKS
+
+*MENTOR*: NEELA SANTOSH
 
 A comprehensive online learning platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js) that supports video lessons, quizzes, and progress tracking.
 
