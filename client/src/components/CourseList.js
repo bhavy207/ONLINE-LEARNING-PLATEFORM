@@ -31,7 +31,7 @@ const courses = [
     duration: '8 weeks',
     level: 'Beginner',
     category: 'Web Development',
-    image: 'https://source.unsplash.com/random/400x300?web'
+    image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg'
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const courses = [
     duration: '10 weeks',
     level: 'Advanced',
     category: 'Programming',
-    image: 'https://source.unsplash.com/random/400x300?javascript'
+    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg'
   },
   {
     id: 3,
@@ -55,7 +55,7 @@ const courses = [
     duration: '6 weeks',
     level: 'Intermediate',
     category: 'Web Development',
-    image: 'https://source.unsplash.com/random/400x300?react'
+    image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg'
   }
 ];
 

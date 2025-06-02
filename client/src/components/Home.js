@@ -16,17 +16,17 @@ const features = [
   {
     title: 'Interactive Learning',
     description: 'Engage with interactive lessons and quizzes to enhance your learning experience.',
-    image: 'https://source.unsplash.com/random/400x300?education'
+    image: 'https://images.pexels.com/photos/5905702/pexels-photo-5905702.jpeg'
   },
   {
     title: 'Expert Instructors',
     description: 'Learn from industry experts and experienced professionals in their fields.',
-    image: 'https://source.unsplash.com/random/400x300?teacher'
+    image: 'https://images.pexels.com/photos/5905717/pexels-photo-5905717.jpeg'
   },
   {
     title: 'Flexible Schedule',
     description: 'Learn at your own pace with 24/7 access to course materials.',
-    image: 'https://source.unsplash.com/random/400x300?schedule'
+    image: 'https://images.pexels.com/photos/5905708/pexels-photo-5905708.jpeg'
   }
 ];
 
