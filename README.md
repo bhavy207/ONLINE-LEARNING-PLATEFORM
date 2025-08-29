@@ -1,109 +1,290 @@
-# PORTFOLIO WEBSITE WITH ADVANCED ANIMATIONS
+# 🎓 LearnHub - Online Learning Platform
 
-*COMPANY*: CODTECH IT SOLUTIONS
+A complete MERN stack online learning platform with course management, user authentication, video lessons, and progress tracking.
 
-*NAME*: BHAVY MANGUKIYA
+## ✨ Features
 
-*INTERN ID*: CT04DM87
+- **User Authentication & Authorization**
+  - JWT-based authentication
+  - Role-based access (Student, Instructor, Admin)
+  - Secure password hashing with bcrypt
 
-*DOMAIN* : WEB DEVELOPER
+- **Course Management**
+  - Create, update, and delete courses
+  - Video lessons with progress tracking
+  - Course categories and difficulty levels
+  - Course search and filtering
 
-*DURATION*: 4 WEEKS
+- **Learning Experience**
+  - Interactive video player
+  - Lesson completion tracking
+  - Progress visualization
+  - Course enrollment system
 
-*MENTOR*: NEELA SANTOSH
+- **Dashboard & Analytics**
+  - Personalized student dashboard
+  - Instructor course management
+  - Admin panel for platform management
+  - Progress tracking and statistics
 
-A comprehensive online learning platform built with the MERN stack (MongoDB, Express.js, React.js, Node.js) that supports video lessons, quizzes, and progress tracking.
+- **Responsive Design**
+  - Modern, mobile-first design
+  - Beautiful gradient UI
+  - Smooth animations and transitions
 
-## Features
+## 🛠️ Tech Stack
 
-- User Authentication (Student/Instructor roles)
-- Video Lessons with streaming capabilities
-- Interactive Quizzes
-- Progress Tracking
-- Course Management
-- Responsive and Student-friendly UI
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **MongoDB** - Database
+- **Mongoose** - ODM for MongoDB
+- **JWT** - Authentication
+- **bcryptjs** - Password hashing
+- **Multer** - File uploads
+- **CORS** - Cross-origin requests
 
-## Tech Stack
+### Frontend
+- **React 18** - UI library
+- **Vite** - Build tool
+- **React Router** - Client-side routing
+- **Axios** - HTTP client
+- **React Hot Toast** - Notifications
+- **CSS3** - Styling with modern features
 
-- Frontend: React.js, Material-UI
-- Backend: Node.js, Express.js
-- Database: MongoDB Atlas
-- Video Streaming: AWS S3 or similar service
-- Authentication: JWT
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-online-learning-platform/
-├── client/                 # React frontend
-├── server/                 # Node.js backend
-├── .gitignore
-└── README.md
+learning-platform/
+├── backend/
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Course.js
+│   │   └── Progress.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── courses.js
+│   │   └── progress.js
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── uploads/
+│   ├── package.json
+│   ├── server.js
+│   └── .env
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.jsx
+    │   │   ├── CourseCard.jsx
+    │   │   ├── VideoPlayer.jsx
+    │   │   └── ProgressBar.jsx
+    │   ├── pages/
+    │   │   ├── Home.jsx
+    │   │   ├── Login.jsx
+    │   │   ├── Register.jsx
+    │   │   ├── Dashboard.jsx
+    │   │   ├── Courses.jsx
+    │   │   ├── CourseDetail.jsx
+    │   │   └── AdminPanel.jsx
+    │   ├── context/
+    │   │   └── AuthContext.jsx
+    │   ├── utils/
+    │   │   └── api.js
+    │   ├── App.jsx
+    │   ├── App.css
+    │   └── main.jsx
+    ├── package.json
+    └── vite.config.js
 ```
 
-## Setup Instructions
+## 🚀 Getting Started
 
 ### Prerequisites
+- Node.js (v14+ recommended)
+- MongoDB (local or MongoDB Atlas)
+- Git
 
-- Node.js (v14 or higher)
-- MongoDB Atlas account
-- npm or yarn
+### 1. Clone the Repository
+```bash
+git clone <your-repo-url>
+cd learning-platform
+```
 
-### Installation
+### 2. Backend Setup
+```bash
+cd backend
+npm install
+```
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   # Install server dependencies
-   cd server
-   npm install
+Create a `.env` file in the backend directory:
+```env
+MONGODB_URI=mongodb://localhost:27017/learning-platform
+JWT_SECRET=your_jwt_secret_key_here_change_in_production
+NODE_ENV=development
+PORT=5000
+```
 
-   # Install client dependencies
-   cd ../client
-   npm install
-   ```
+Start the backend server:
+```bash
+npm run dev
+```
 
-3. Create a `.env` file in the server directory with the following variables:
-   ```
-   MONGODB_URI=your_mongodb_atlas_uri
-   JWT_SECRET=your_jwt_secret
-   PORT=5000
-   ```
+Backend will run on: http://localhost:5000
 
-4. Start the development servers:
-   ```bash
-   # Start backend server
-   cd server
-   npm run dev
+### 3. Frontend Setup
+```bash
+cd ../frontend
+npm install
+```
 
-   # Start frontend server
-   cd ../client
-   npm start
-   ```
+Start the frontend development server:
+```bash
+npm run dex
+```
 
-## Environment Variables
+Frontend will run on: http://localhost:5173
 
-Create a `.env` file in the server directory with the following variables:
+## 📝 API Endpoints
 
-- `MONGODB_URI`: Your MongoDB Atlas connection string
-- `JWT_SECRET`: Secret key for JWT authentication
-- `PORT`: Backend server port (default: 5000)
+### Authentication
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `GET /api/auth/me` - Get current user
 
-## Contributing
+### Courses
+- `GET /api/courses` - Get all courses (with filters)
+- `GET /api/courses/:id` - Get single course
+- `POST /api/courses` - Create course (instructor/admin)
+- `PUT /api/courses/:id` - Update course
+- `POST /api/courses/:id/enroll` - Enroll in course
+- `GET /api/courses/enrolled/me` - Get user's enrolled courses
+
+### Progress
+- `GET /api/progress/:courseId` - Get course progress
+- `POST /api/progress/:courseId/lesson/:lessonId` - Mark lesson complete
+
+## 👥 User Roles
+
+### Student
+- Browse and search courses
+- Enroll in courses
+- Track learning progress
+- View personal dashboard
+
+### Instructor
+- Create and manage courses
+- Add lessons and content
+- View student enrollment
+- Access instructor dashboard
+
+### Admin
+- Full platform access
+- Manage all courses
+- User management capabilities
+- Platform analytics
+
+## 🎯 Demo Accounts
+
+For testing purposes, you can create demo accounts:
+
+**Student Account:**
+- Email: student@demo.com
+- Password: password123
+
+**Instructor Account:**
+- Email: instructor@demo.com  
+- Password: password123
+
+**Admin Account:**
+- Email: admin@demo.com
+- Password: password123
+
+## 🔧 Environment Variables
+
+### Backend (.env)
+```env
+MONGODB_URI=mongodb://localhost:27017/learning-platform
+JWT_SECRET=your_jwt_secret_key_here
+NODE_ENV=development
+PORT=5000
+```
+
+## 📱 Features Overview
+
+### Home Page
+- Hero section with call-to-action
+- Featured courses display
+- Platform benefits showcase
+
+### Authentication
+- Secure login/register forms
+- JWT token management
+- Role-based redirects
+
+### Course Management
+- Rich course creation forms
+- Lesson management
+- Video upload support
+- Progress tracking
+
+### Student Experience
+- Course browsing with filters
+- Video learning interface
+- Progress visualization
+- Personal dashboard
+
+### Instructor Tools
+- Course creation wizard
+- Student progress monitoring
+- Content management
+
+## 🎨 Styling
+
+The platform uses a modern design with:
+- Gradient backgrounds
+- Card-based layouts
+- Smooth animations
+- Mobile-responsive design
+- Professional color scheme
+
+## 🔒 Security Features
+
+- Password hashing with bcrypt
+- JWT token authentication
+- Route protection
+- Input validation
+- CORS configuration
+
+## 🚀 Deployment
+
+### Backend Deployment
+1. Set production environment variables
+2. Deploy to services like Heroku, Railway, or DigitalOcean
+3. Update CORS settings for production domain
+
+### Frontend Deployment
+1. Build the application: `npm run build`
+2. Deploy to services like Netlify, Vercel, or AWS S3
+3. Update API base URL for production
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch
+2. Create a feature branch
 3. Commit your changes
 4. Push to the branch
-5. Create a new Pull Request
+5. Open a Pull Request
 
+## 📄 License
 
-## OUTPUT
-![Image](https://github.com/user-attachments/assets/555c9c24-46c0-4249-b6ae-f3120d8611fd)
-![Image](https://github.com/user-attachments/assets/a4ddab2c-1644-4099-ba10-5f1f8aab5c66)
-![Image](https://github.com/user-attachments/assets/cc7847b9-ffe2-4a9b-bd4d-957108173a83)
-![Image](https://github.com/user-attachments/assets/33f41cff-60e6-4e29-ad82-91b6038e925d)
-![Image](https://github.com/user-attachments/assets/fe4045b4-8c10-4402-b105-42d893b6d484)
-![Image](https://github.com/user-attachments/assets/a845ba29-0032-4dee-ad86-d9ce63eac1a7)
-![Image](https://github.com/user-attachments/assets/30b08b62-d399-469e-b6b2-782261f14c18)
-![Image](https://github.com/user-attachments/assets/580bb4fe-0deb-4f87-a0cf-f0cc9d95bd0b)
+This project is licensed under the MIT License.
+
+## 🙏 Acknowledgments
+
+- Built with modern MERN stack technologies
+- Responsive design inspired by modern learning platforms
+- Icons and emojis for enhanced user experience
+
+---
+
+**Happy Learning! 🎓**
