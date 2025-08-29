@@ -1,3 +1,6 @@
+# 🎓 LearnHub - Online Learning Platform
+
+A complete MERN stack online learning platform with course management, user authentication, video lessons, and progress tracking.
 
 *COMPANY*: CODTECH IT SOLUTIONS
 
@@ -10,11 +13,6 @@
 *DURATION*: 4 WEEKS
 
 *MENTOR*: NEELA SANTOSH
-
-# 🎓 LearnHub - Online Learning Platform
-
-A complete MERN stack online learning platform with course management, user authentication, video lessons, and progress tracking.
-
 ## ✨ Features
 
 - **User Authentication & Authorization**
