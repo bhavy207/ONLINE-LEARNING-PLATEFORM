@@ -1,3 +1,16 @@
+
+*COMPANY*: CODTECH IT SOLUTIONS
+
+*NAME*: BHAVY MANGUKIYA
+
+*INTERN ID*: CT04DM87
+
+*DOMAIN* : WEB DEVELOPER
+
+*DURATION*: 4 WEEKS
+
+*MENTOR*: NEELA SANTOSH
+
 # 🎓 LearnHub - Online Learning Platform
 
 A complete MERN stack online learning platform with course management, user authentication, video lessons, and progress tracking.
@@ -266,25 +279,3 @@ The platform uses a modern design with:
 1. Build the application: `npm run build`
 2. Deploy to services like Netlify, Vercel, or AWS S3
 3. Update API base URL for production
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- Built with modern MERN stack technologies
-- Responsive design inspired by modern learning platforms
-- Icons and emojis for enhanced user experience
-
----
-
-**Happy Learning! 🎓**
